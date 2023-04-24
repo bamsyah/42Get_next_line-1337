@@ -6,7 +6,7 @@
 /*   By: bamsyah <bamsyah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 12:33:33 by bamsyah           #+#    #+#             */
-/*   Updated: 2023/04/24 12:14:39 by bamsyah          ###   ########.fr       */
+/*   Updated: 2023/04/24 12:27:06 by bamsyah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,24 +95,8 @@ char	*get_next_line(int fd)
 	if (!rest)
 		return (NULL);
 	line = ft_jibiline(rest);
+	if (!line[0])
+		return (NULL);
 	rest = ft_jibirest(rest, line);
 	return (line);
-}
-int	main(void)
-{
-	char	*rest;
-	int	fd = open("test.txt", O_RDONLY);
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
 }

@@ -6,7 +6,7 @@
 /*   By: bamsyah <bamsyah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 12:33:52 by bamsyah           #+#    #+#             */
-/*   Updated: 2023/04/20 17:57:30 by bamsyah          ###   ########.fr       */
+/*   Updated: 2023/04/24 09:10:01 by bamsyah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@
 #  define BUFFER_SIZE 10
 # endif
 
-char	*ft_jibinextline(char *rest);
+char	*ft_get_rest(char *stash, char *line);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_strlen(char *str);
 char	*ft_strdup(char *rest);
 char	*ft_strjoin(char *s1, char *s2);
-int	ft_strchr(char *buffer);
+int		ft_strchr(char *buffer);
 char	*read_file(int fd, char *rest);
 char	*get_next_line(int fd);
+char	*ft_jibiline(char *rest);
 
 #endif

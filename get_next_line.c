@@ -6,7 +6,7 @@
 /*   By: bamsyah <bamsyah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 12:33:33 by bamsyah           #+#    #+#             */
-/*   Updated: 2023/04/20 18:04:59 by bamsyah          ###   ########.fr       */
+/*   Updated: 2023/04/24 09:09:37 by bamsyah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*read_file(int fd, char *rest)
 {
-	char	*buffer;
+	char		*buffer;
 	ssize_t		rread;
 
 	buffer = malloc(BUFFER_SIZE + 1);
@@ -38,7 +38,7 @@ char	*ft_jibiline(char *rest)
 
 	i = 0;
 	if (!rest)
-		return(NULL);
+		return (NULL);
 	while (rest[i] != '\0' && rest[i])
 		i++;
 	if (rest[i] == '\n')
@@ -58,25 +58,27 @@ char	*ft_jibiline(char *rest)
 	return (str);
 }
 
-char	*ft_jibinextline(char *rest)
+char	*ft_get_rest(char *stash, char *line)
 {
-	char	*str;
+	char	*rest;
 	int		i;
 	int		j;
 
+	i = ft_strlen(line);
+	if (!stash[i])
+		return (free(stash), NULL);
 	j = 0;
-	i = 0;
-	while (rest[i] != '\n')
-		i++;
-	if (rest[i] == '\n')
-		i++;
-	str = malloc(sizeof(char) * (ft_strlen(rest) - i) + 1);
-	if (!str)
+	while (stash[i++])
+		j++;
+	rest = malloc(sizeof(char) * (j + 1));
+	if (!rest)
 		return (NULL);
-	while (rest[i])
-		str[j++] = rest[i++];
-	str[j] = '\0';
-	return (free(rest), str);
+	i = ft_strlen(line);
+	j = 0;
+	while (stash[i])
+		rest[j++] = stash[i++];
+	rest[j] = '\0';
+	return (free(stash), rest);
 }
 
 char	*get_next_line(int fd)
@@ -90,7 +92,6 @@ char	*get_next_line(int fd)
 	if (!rest)
 		return (NULL);
 	line = ft_jibiline(rest);
-	rest = ft_jibinextline(rest);
+	rest = ft_get_rest(rest, line);
 	return (line);
 }
-

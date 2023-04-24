@@ -6,7 +6,7 @@
 /*   By: bamsyah <bamsyah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 12:33:52 by bamsyah           #+#    #+#             */
-/*   Updated: 2023/04/24 09:50:46 by bamsyah          ###   ########.fr       */
+/*   Updated: 2023/04/24 12:13:55 by bamsyah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 # define GET_NEXT_LINE_H
 
 # include <unistd.h>
+# include <string.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include <stdio.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10
+#  define BUFFER_SIZE 1
 # endif
 
-char	*ft_get_rest(char *rest, char *line);
+char	*ft_jibirest(char *rest, char *line);
 int		ft_strlen(char *str);
 char	*ft_strdup(char *rest);
 char	*ft_strjoin(char *buffer, char *rest);

@@ -6,7 +6,7 @@
 /*   By: bamsyah <bamsyah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 12:37:00 by bamsyah           #+#    #+#             */
-/*   Updated: 2023/04/24 09:52:39 by bamsyah          ###   ########.fr       */
+/*   Updated: 2023/04/24 11:21:56 by bamsyah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_strjoin(char *buffer, char *rest)
 	jma3 = malloc(sizeof(char) * (ft_strlen(buffer) + ft_strlen(rest)) + 1);
 	if (!jma3)
 		return (NULL);
-	while (rest[i])
+	while (rest && rest[i])
 	{
 		jma3[i] = rest[i];
 		i++;
@@ -51,7 +51,8 @@ char	*ft_strjoin(char *buffer, char *rest)
 		jma3[i++] = buffer[y++];
 	}
 	jma3[i] = '\0';
-	return (free(buffer), jma3);
+	free(rest);
+	return ( jma3);
 }
 
 char	*ft_strdup(char *str)

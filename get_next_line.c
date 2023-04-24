@@ -6,7 +6,7 @@
 /*   By: bamsyah <bamsyah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 12:33:33 by bamsyah           #+#    #+#             */
-/*   Updated: 2023/04/24 09:17:07 by bamsyah          ###   ########.fr       */
+/*   Updated: 2023/04/24 09:52:30 by bamsyah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*ft_jibiline(char *rest)
 	i = 0;
 	if (!rest)
 		return (NULL);
-	while (rest[i] != '\0' && rest[i])
+	while (rest[i] != '\n' && rest[i])
 		i++;
 	if (rest[i] == '\n')
 		i++;
@@ -58,27 +58,27 @@ char	*ft_jibiline(char *rest)
 	return (str);
 }
 
-char	*ft_get_rest(char *stash, char *line)
+char	*ft_get_rest(char *rest, char *line)
 {
-	char	*rest;
+	char	*rrest;
 	int		i;
 	int		j;
 
 	i = ft_strlen(line);
-	if (!stash[i])
-		return (free(stash), NULL);
+	if (!rest[i])
+		return (free(rest), NULL);
 	j = 0;
-	while (stash[i++])
+	while (rest[i++])
 		j++;
-	rest = malloc(sizeof(char) * (j + 1));
+	rrest = malloc(sizeof(char) * (j + 1));
 	if (!rest)
 		return (NULL);
 	i = ft_strlen(line);
 	j = 0;
-	while (stash[i])
-		rest[j++] = stash[i++];
-	rest[j] = '\0';
-	return (free(stash), rest);
+	while (rest[i])
+		rrest[j++] = rest[i++];
+	rrest[j] = '\0';
+	return (free(rest), rrest);
 }
 
 char	*get_next_line(int fd)
@@ -98,5 +98,8 @@ char	*get_next_line(int fd)
 int	main(void)
 {
 	int	fd = open("test.txt", O_RDONLY);
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
 }

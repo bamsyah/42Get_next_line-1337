@@ -6,7 +6,7 @@
 /*   By: bamsyah <bamsyah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 12:33:33 by bamsyah           #+#    #+#             */
-/*   Updated: 2023/04/24 09:09:37 by bamsyah          ###   ########.fr       */
+/*   Updated: 2023/04/24 09:17:07 by bamsyah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,9 @@ char	*get_next_line(int fd)
 	line = ft_jibiline(rest);
 	rest = ft_get_rest(rest, line);
 	return (line);
+}
+int	main(void)
+{
+	int	fd = open("test.txt", O_RDONLY);
+	printf("%s", get_next_line(fd));
 }

@@ -6,7 +6,7 @@
 /*   By: bamsyah <bamsyah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 12:33:52 by bamsyah           #+#    #+#             */
-/*   Updated: 2023/04/24 12:23:45 by bamsyah          ###   ########.fr       */
+/*   Updated: 2023/04/25 10:17:17 by bamsyah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 1000
 # endif
 
 char	*ft_jibirest(char *rest, char *line);

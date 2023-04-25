@@ -6,7 +6,7 @@
 /*   By: bamsyah <bamsyah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 12:33:33 by bamsyah           #+#    #+#             */
-/*   Updated: 2023/04/25 10:39:41 by bamsyah          ###   ########.fr       */
+/*   Updated: 2023/04/25 14:19:09 by bamsyah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*read_file(int fd, char *rest)
 	char		*buffer;
 	ssize_t		rread;
 
-	buffer = malloc(BUFFER_SIZE + 1);
+	buffer = ft_calloc(BUFFER_SIZE + 1, 1);
 	if (!buffer)
 		return (NULL);
 	rread = 1;
@@ -78,7 +78,7 @@ char	*ft_jibirest(char *rest, char *line)
 	while (rest[i++])
 		j++;
 	rrest = malloc(sizeof(char) * (j + 1));
-	if (!rest)
+	if (!rrest)
 		return (NULL);
 	i = ft_strlen(line);
 	j = 0;
@@ -91,7 +91,7 @@ char	*ft_jibirest(char *rest, char *line)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*rest;
+	static char	*rest = NULL;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -102,6 +102,8 @@ char	*get_next_line(int fd)
 	if (line == NULL)
 		return (NULL);
 	rest = ft_jibirest(rest, line);
+	if (rest == NULL)
+		return (NULL);
 	return (line);
 }
 
@@ -113,5 +115,6 @@ char	*get_next_line(int fd)
 // 	printf("%s", get_next_line(fd));
 // 	printf("%s", get_next_line(fd));
 // 	printf("%s", get_next_line(fd));
-// 	system("leaks a.out");
+// 	printf("%s", get_next_line(fd));
+// 	// system("leaks a.out");
 // }

@@ -6,7 +6,7 @@
 /*   By: bamsyah <bamsyah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 12:33:33 by bamsyah           #+#    #+#             */
-/*   Updated: 2023/04/25 14:19:09 by bamsyah          ###   ########.fr       */
+/*   Updated: 2023/04/25 14:31:22 by bamsyah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ char	*read_file(int fd, char *rest)
 	char		*buffer;
 	ssize_t		rread;
 
-	buffer = ft_calloc(BUFFER_SIZE + 1, 1);
+	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
+	if (!rest)
+		rest = ft_strdup("");
 	rread = 1;
 	while (!ft_strchr(buffer) && rread != 0)
 	{
@@ -106,15 +108,3 @@ char	*get_next_line(int fd)
 		return (NULL);
 	return (line);
 }
-
-// int main()
-// {
-// 	int fd = open("test.txt", O_RDONLY);
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
-// 	printf("%s", get_next_line(fd));
-// 	// system("leaks a.out");
-// }

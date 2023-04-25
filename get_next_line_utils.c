@@ -6,7 +6,7 @@
 /*   By: bamsyah <bamsyah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 12:37:00 by bamsyah           #+#    #+#             */
-/*   Updated: 2023/04/25 14:17:18 by bamsyah          ###   ########.fr       */
+/*   Updated: 2023/04/25 14:30:03 by bamsyah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,35 +24,6 @@ int	ft_strchr(char *buffer)
 		i++;
 	}
 	return (0);
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	size_t	i;
-	void	*ptr;
-
-	i = 0;
-	if (count != 0 && size > SIZE_MAX / count)
-		return (NULL);
-	ptr = malloc(count * size);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, (count * size));
-	return (ptr);
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
-	char	*str;
-
-	i = 0;
-	str = s;
-	while (i < n)
-	{
-		str[i] = '\0';
-		i++;
-	}
 }
 
 char	*ft_strjoin(char *buffer, char *rest)

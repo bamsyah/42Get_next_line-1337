@@ -6,7 +6,7 @@
 /*   By: bamsyah <bamsyah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 12:33:33 by bamsyah           #+#    #+#             */
-/*   Updated: 2023/04/25 14:31:22 by bamsyah          ###   ########.fr       */
+/*   Updated: 2023/07/13 19:59:54 by bamsyah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*read_file(int fd, char *rest)
 	return (rest);
 }
 
-char	*ft_jibiline(char *rest)
+char	*ft_getline(char *rest)
 {
 	char	*str;
 	int		i;
@@ -67,7 +67,7 @@ char	*ft_jibiline(char *rest)
 	return (str);
 }
 
-char	*ft_jibirest(char *rest, char *line)
+char	*ft_getrest(char *rest, char *line)
 {
 	char	*rrest;
 	int		i;
@@ -100,11 +100,23 @@ char	*get_next_line(int fd)
 	rest = read_file(fd, rest);
 	if (rest == NULL)
 		return (NULL);
-	line = ft_jibiline(rest);
+	line = ft_getline(rest);
 	if (line == NULL)
 		return (NULL);
-	rest = ft_jibirest(rest, line);
+	rest = ft_getrest(rest, line);
 	if (rest == NULL)
 		return (NULL);
 	return (line);
+}
+int main ()
+{
+	int fd;
+	int i = 0;
+	fd = open("test.txt", O_RDONLY);
+	//system("leaks get_next_line");
+	while (i < 10)
+	{
+		printf("%s", get_next_line(fd));
+		i++;
+	}
 }
